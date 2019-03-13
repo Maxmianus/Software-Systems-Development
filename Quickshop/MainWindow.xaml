@@ -1,0 +1,73 @@
+﻿<Window x:Class="QuickShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuickShop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="546.779" Width="637.045">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" Text=""/>
+        <Label x:Name="currentUserNameLabel" Content="" Grid.Column="1" Grid.Row="2" Margin="0,16,0,0" Grid.RowSpan="2" />
+
+        <TextBlock Grid.Column="1" Grid.Row="3" Text=""/>
+
+        <TextBlock Grid.Column="1" Grid.Row="5" Text=""/>
+
+        <TextBlock Grid.Column="1" Grid.Row="7" Text=""/>
+        <Menu HorizontalAlignment="Left" Height="27" Margin="0,-2,0,0" VerticalAlignment="Top" Width="619" Grid.ColumnSpan="7">
+            <MenuItem Header="Order" Cursor="">
+                <MenuItem x:Name="AddNewOrderItem" Header="Add New Order" Click="AddNewOrderItem_Click"/>
+                <MenuItem x:Name="SearchOrDeleteOrderItem" Header="Search or Delete Order" Click="SearchOrDeleteOrderItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Employee">
+                <MenuItem x:Name="AddNewEmployeeItem" Header="Add New Employee" Click="AddNewEmployeeItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem x:Name="PaymentInfoBtn" Header="Payment Information" Click="PaymentInfoBtn_Click"/>
+                <MenuItem x:Name="LogsButton" Header="Confirmed Orders" Click="LogsButton_Click"/>
+            </MenuItem>
+            <Button x:Name="LogOutBtn" Content="Log Out" Click="LogOutBtn_Click" Height="27"/>
+        </Menu>
+        <TabControl x:Name="TabCollection" Grid.ColumnSpan="5" Grid.Column="1" HorizontalAlignment="Left" Height="290" Margin="1,1,0,0" Grid.Row="14" VerticalAlignment="Top" Width="568" Grid.RowSpan="2">
+            <TabItem Header="View Pick-up Schedule">
+                <local:MainWindowScheduleDisplayUC x:Name="PickUpOrdersUC" ItemsSource="{Binding}"/>
+            </TabItem>
+            <TabItem Header="View Delivery Schedule">
+                <local:MainWindowScheduleDisplayUC x:Name="DeliveryOrdersUC" ItemsSource="{Binding}"/>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="ConfirmButton" Content="Confirm Order" Grid.Column="5" HorizontalAlignment="Left" Margin="203,307,0,0" Grid.Row="14" VerticalAlignment="Top" Width="106" Height="29" Click="ConfirmOrder_Click"/>
+
+
+    </Grid>
+</Window>
